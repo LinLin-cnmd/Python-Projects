@@ -1,3 +1,3 @@
 学习python时的项目  
 序列帧生成器直接运行代码就可以使用了  
-![序列帧生成器展示](./img/video to photos.png)
+![序列帧生成器展示](./img/video_to_photos.png)
