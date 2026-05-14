@@ -1,8 +1,0 @@
-{
-    "window.density.editorTabHeight": "default",
-    "window.autoDetectColorScheme": false,
-    "claudeCode.environmentVariables": [
-        {"name": "ANTHROPIC_BASE_URL", "value": "https://api.anthropic.com"},
-        {"name": "ANTHROPIC_AUTH_TOKEN", "value": "your_api_key_here"}
-    ]
-}
