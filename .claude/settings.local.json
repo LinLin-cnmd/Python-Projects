@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la \"C:\\\\\\\\Users\\\\\\\\54093\\\\\\\\.vscode\\\\\\\\extensions\\\\\\\\\" 2>/dev/null | grep -i claude; echo \"===\"; ls -la \"$HOME/.vscode/extensions/\" 2>/dev/null | grep -i claude)",
+      "Read(//c/Users/54093/.vscode/extensions/**)",
+      "Bash(rm -rf \"C:\\\\\\\\Users\\\\\\\\54093\\\\\\\\.claude\")",
+      "Bash(ls -la \"C:\\\\\\\\Users\\\\\\\\54093\\\\\\\\.claude\\\\\\\\\")"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\54093\\.claude"
+    ]
+  }
+}

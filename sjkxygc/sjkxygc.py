@@ -1,19 +1,27 @@
-import pyodbc
+import pymysql
+from pymysql import Error
 import re
-# 连接本地SQL Server Express数据库
-conn = pyodbc.connect(
-    driver='ODBC Driver 17 for SQL Server',
-    server='.\SQLEXPRESS',
-    database='数据科学与工程',
-    Trusted_Connection='yes',
-    TrustServerCertificate='yes'
-)
 
-cursor = conn.cursor()
+# 1. 创建数据库连接
+try:
+    conn = pymysql.connect(
+        host='localhost',       # 数据库地址（本地填localhost）
+        port=3306,              # MySQL默认端口
+        user='root',            # 你的MySQL用户名
+        password='123456',      # 你的MySQL密码
+        database='sjkxygc',     # 要连接的数据库名
+        charset='utf8mb4'       # 字符集（支持表情）
+    )
+    cursor = conn.cursor()
+    print("数据库连接成功!")
+except:
+    print("数据库连接失败!")
+    exit()
+
 # 查询整张课表数据
-table_name = 'TC2'
+table_name = 'tc2'
 cursor.execute("""
-SELECT DISTINCT 开课课程, 课程编号,课程属性, 课程性质, 授课教师, 上课班级, 上课地点, 星期, 上课周次, 开课时间 FROM dbo.TC2 ORDER BY 授课教师, 星期, 上课周次
+SELECT DISTINCT 开课课程, 课程编号,课程属性, 课程性质, 授课教师, 上课班级, 上课地点, 星期, 上课周次, 开课时间 FROM tc2 ORDER BY 授课教师, 星期, 上课周次
 """)
 result1 = cursor.fetchall()
 
@@ -73,9 +81,12 @@ for row in result1:
 ALL_PERIODS = set(range(1, 6))  # 一天5节课
 
 print(f"\n{t}老师 第{w}周 空闲时间：")
-for day in sorted(occupied.keys()):
-    free = sorted(ALL_PERIODS - occupied[day])
-    if free:
-        print(f"  星期{day}：第{','.join(map(str, free))}节 空闲")
+for day in range(1, 8):  # 星期一到星期日
+    if day in occupied:
+        free = sorted(ALL_PERIODS - occupied[day])
+        if free:
+            print(f"  星期{day}：第{'、'.join(map(str, free))}节空闲")
+        else:
+            print(f"  星期{day}：满课")
     else:
-        print(f"  星期{day}：满课")
+        print(f"  星期{day}：全天空闲")
