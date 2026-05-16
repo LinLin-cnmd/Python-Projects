@@ -6,7 +6,7 @@
 序列帧生成器直接运行代码就可以使用了。
 
 ## 工具预览  
-![展示图片](Python-Projects/main/img/video_to_photos.png)  
+![展示图片](https://github.com/LinLin-cnmd/Python-Projects/blob/main/Python-Projects/main/img/video_to_photos.png)
 # ico转换器
 
 学习 Python 时开发的视频ico转换工具。
